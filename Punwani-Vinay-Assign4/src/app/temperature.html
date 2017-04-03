@@ -1,0 +1,40 @@
+<div class="container template-temperature">
+    <h2>Temperature Conversion</h2>
+    <div class="row">
+        <p class="three columns">
+            Convert Celsius to Fahrenheit
+        </p>
+        <input placeholder="Enter &#8451;" class="two columns" type="text" pattern="[0-9]*" [(ngModel)]="celsius" name="inputCelsius" #inputCelsius="ngModel" required/>
+        <button class="button-primary five columns" (click)="submitCelsius(inputCelsius.valid)">Get Fahrenheit</button>
+    </div>
+    <p *ngIf="inputCelsius?.errors?.pattern && celsiusFormSubmitted" class="error-message">
+        Only numeric characters are allowed.
+    </p>
+    <p *ngIf="inputCelsius?.errors?.required && celsiusFormSubmitted" class="error-message">
+        Please enter a celsius temperature to convert.
+    </p>
+    <div class="row">
+        <p *ngIf="returnedFahrenheit" class="success-message three columns">
+            {{ displayedCelsius }}&#8451; is {{ returnedFahrenheit }}&#8457;.
+        </p>
+    </div>
+
+    <div class="row">
+        <p class="three columns">
+            Convert Fahrenheit to Celsius
+        </p>
+        <input placeholder="Enter &#8457;" class="two columns" type="text" pattern="[0-9]*" [(ngModel)]="fahrenheit" name="inputFahrenheit" #inputFahrenheit="ngModel" required/>
+        <button class="button-primary five columns" (click)="submitFahrenheit(inputFahrenheit.valid)">Get Celsius</button>
+    </div>
+    <p *ngIf="inputFahrenheit?.errors?.pattern && fahrenheitFormSubmitted" class="error-message">
+        Only numeric characters are allowed.
+    </p>
+    <p *ngIf="inputFahrenheit?.errors?.required && fahrenheitFormSubmitted" class="error-message">
+        Please enter a fahrenheit temperature to convert.
+    </p>
+    <div class="row">
+        <p *ngIf="returnedCelsius" class="success-message three columns">
+            {{ displayedFahrenheit }}&#8457; is {{ returnedCelsius }}&#8451;.
+        </p>
+    </div>
+</div>
